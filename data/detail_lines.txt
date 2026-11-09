@@ -1,0 +1,501 @@
+== BEA SAPCE4: line code | description ==
+1 | [SAPCE4] Total personal consumption expenditures: Personal consumption expenditures
+2 | [SAPCE4] Total personal consumption expenditures: Household consumption expenditures
+3 | [SAPCE4] Total personal consumption expenditures: Food and beverages purchased for off-premises consumption
+4 | [SAPCE4] Total personal consumption expenditures: Food and nonalcoholic beverages purchased for off-premises consumption
+5 | [SAPCE4] Total personal consumption expenditures: Alcoholic beverages purchased for off-premises consumption
+6 | [SAPCE4] Total personal consumption expenditures: Food produced and consumed on farms
+7 | [SAPCE4] Total personal consumption expenditures: Clothing, footwear, and related services
+8 | [SAPCE4] Total personal consumption expenditures: Clothing
+9 | [SAPCE4] Total personal consumption expenditures: Garments
+10 | [SAPCE4] Total personal consumption expenditures: Women's and girls' clothing
+11 | [SAPCE4] Total personal consumption expenditures: Men's and boys' clothing
+12 | [SAPCE4] Total personal consumption expenditures: Children's and infants' clothing
+13 | [SAPCE4] Total personal consumption expenditures: Other clothing materials
+14 | [SAPCE4] Total personal consumption expenditures: Cleaning, repair, and rental of clothing
+15 | [SAPCE4] Total personal consumption expenditures: Laundry and dry cleaning services
+16 | [SAPCE4] Total personal consumption expenditures: Clothing repair, rental, and alterations
+17 | [SAPCE4] Total personal consumption expenditures: Footwear
+18 | [SAPCE4] Total personal consumption expenditures: Housing, utilities, and fuels
+19 | [SAPCE4] Total personal consumption expenditures: Housing
+20 | [SAPCE4] Total personal consumption expenditures: Rental of tenant-occupied nonfarm housing
+21 | [SAPCE4] Total personal consumption expenditures: Imputed rental of owner-occupied nonfarm housing
+22 | [SAPCE4] Total personal consumption expenditures: Rental value of farm dwellings
+23 | [SAPCE4] Total personal consumption expenditures: Group housing
+24 | [SAPCE4] Total personal consumption expenditures: Household utilities and fuels
+25 | [SAPCE4] Total personal consumption expenditures: Water supply and sanitation
+26 | [SAPCE4] Total personal consumption expenditures: Electricity, gas, and other fuels
+27 | [SAPCE4] Total personal consumption expenditures: Electricity
+28 | [SAPCE4] Total personal consumption expenditures: Natural gas
+29 | [SAPCE4] Total personal consumption expenditures: Fuel oil and other fuels
+30 | [SAPCE4] Total personal consumption expenditures: Furnishings, household equipment, and routine household maintenance
+31 | [SAPCE4] Total personal consumption expenditures: Furniture, furnishings, and floor coverings
+32 | [SAPCE4] Total personal consumption expenditures: Household textiles
+33 | [SAPCE4] Total personal consumption expenditures: Household appliances
+34 | [SAPCE4] Total personal consumption expenditures: Glassware, tableware, and household utensils
+35 | [SAPCE4] Total personal consumption expenditures: Tools and equipment for house and garden
+36 | [SAPCE4] Total personal consumption expenditures: Other household goods and services
+37 | [SAPCE4] Total personal consumption expenditures: Health
+38 | [SAPCE4] Total personal consumption expenditures: Medical products, appliances, and equipment
+39 | [SAPCE4] Total personal consumption expenditures: Pharmaceutical and other medical products
+40 | [SAPCE4] Total personal consumption expenditures: Pharmaceutical products
+41 | [SAPCE4] Total personal consumption expenditures: Other medical products
+42 | [SAPCE4] Total personal consumption expenditures: Therapeutic appliances and equipment
+43 | [SAPCE4] Total personal consumption expenditures: Outpatient services
+44 | [SAPCE4] Total personal consumption expenditures: Physician services
+45 | [SAPCE4] Total personal consumption expenditures: Dental services
+46 | [SAPCE4] Total personal consumption expenditures: Paramedical services
+47 | [SAPCE4] Total personal consumption expenditures: Home health care
+48 | [SAPCE4] Total personal consumption expenditures: Medical laboratories
+49 | [SAPCE4] Total personal consumption expenditures: Other professional medical services
+50 | [SAPCE4] Total personal consumption expenditures: Hospital and nursing home services
+51 | [SAPCE4] Total personal consumption expenditures: Hospitals
+52 | [SAPCE4] Total personal consumption expenditures: Nursing homes
+53 | [SAPCE4] Total personal consumption expenditures: Transportation
+54 | [SAPCE4] Total personal consumption expenditures: Motor vehicles
+55 | [SAPCE4] Total personal consumption expenditures: New motor vehicles
+56 | [SAPCE4] Total personal consumption expenditures: Net purchases of used motor vehicles
+57 | [SAPCE4] Total personal consumption expenditures: Motor vehicle operation
+58 | [SAPCE4] Total personal consumption expenditures: Motor vehicle parts and accessories
+59 | [SAPCE4] Total personal consumption expenditures: Motor vehicle fuels, lubricants, and fluids
+60 | [SAPCE4] Total personal consumption expenditures: Motor vehicle maintenance and repair
+61 | [SAPCE4] Total personal consumption expenditures: Other motor vehicle services
+62 | [SAPCE4] Total personal consumption expenditures: Public transportation
+63 | [SAPCE4] Total personal consumption expenditures: Ground transportation
+64 | [SAPCE4] Total personal consumption expenditures: Air transportation
+65 | [SAPCE4] Total personal consumption expenditures: Water transportation
+66 | [SAPCE4] Total personal consumption expenditures: Communication
+67 | [SAPCE4] Total personal consumption expenditures: Telephone and related communication equipment
+68 | [SAPCE4] Total personal consumption expenditures: Postal and delivery services
+69 | [SAPCE4] Total personal consumption expenditures: First-class postal service by U.S. Postal Service (USPS)
+70 | [SAPCE4] Total personal consumption expenditures: Other delivery services (by non-USPS facilities)
+71 | [SAPCE4] Total personal consumption expenditures: Telecommunication services
+72 | [SAPCE4] Total personal consumption expenditures: Internet access
+73 | [SAPCE4] Total personal consumption expenditures: Recreation
+74 | [SAPCE4] Total personal consumption expenditures: Video and audio equipment, computers, and related services
+75 | [SAPCE4] Total personal consumption expenditures: Video and audio equipment
+76 | [SAPCE4] Total personal consumption expenditures: Information processing equipment
+77 | [SAPCE4] Total personal consumption expenditures: Services related to video and audio goods and computers
+78 | [SAPCE4] Total personal consumption expenditures: Sports and recreational goods and related services
+79 | [SAPCE4] Total personal consumption expenditures: Sports and recreational vehicles
+80 | [SAPCE4] Total personal consumption expenditures: Other sporting and recreational goods
+81 | [SAPCE4] Total personal consumption expenditures: Maintenance and repair of recreational vehicles and sports equipment
+82 | [SAPCE4] Total personal consumption expenditures: Membership clubs, sports centers, parks, theaters, and museums
+83 | [SAPCE4] Total personal consumption expenditures: Membership clubs and participant sports centers
+84 | [SAPCE4] Total personal consumption expenditures: Amusements parks, campgrounds, and related recreational services
+85 | [SAPCE4] Total personal consumption expenditures: Admissions to specified spectator amusements
+86 | [SAPCE4] Total personal consumption expenditures: Motion picture theaters
+87 | [SAPCE4] Total personal consumption expenditures: Live entertainment, excluding sports
+88 | [SAPCE4] Total personal consumption expenditures: Spectator sports
+89 | [SAPCE4] Total personal consumption expenditures: Museums and libraries
+90 | [SAPCE4] Total personal consumption expenditures: Magazines, newspapers, books, and stationery
+91 | [SAPCE4] Total personal consumption expenditures: Gambling
+92 | [SAPCE4] Total personal consumption expenditures: Pets, pet products, and related services
+93 | [SAPCE4] Total personal consumption expenditures: Photographic goods and services
+94 | [SAPCE4] Total personal consumption expenditures: Package tours
+95 | [SAPCE4] Total personal consumption expenditures: Education
+96 | [SAPCE4] Total personal consumption expenditures: Educational books
+97 | [SAPCE4] Total personal consumption expenditures: Higher education
+98 | [SAPCE4] Total personal consumption expenditures: Nursery, elementary, and secondary schools
+99 | [SAPCE4] Total personal consumption expenditures: Commercial and vocational schools
+100 | [SAPCE4] Total personal consumption expenditures: Food services and accommodations
+101 | [SAPCE4] Total personal consumption expenditures: Food services
+102 | [SAPCE4] Total personal consumption expenditures: Purchased meals and beverages
+103 | [SAPCE4] Total personal consumption expenditures: Food furnished to employees (including military)
+104 | [SAPCE4] Total personal consumption expenditures: Accommodations
+105 | [SAPCE4] Total personal consumption expenditures: Financial services and insurance
+106 | [SAPCE4] Total personal consumption expenditures: Financial services
+107 | [SAPCE4] Total personal consumption expenditures: Financial services furnished without payment
+108 | [SAPCE4] Total personal consumption expenditures: Financial service charges, fees, and commissions
+109 | [SAPCE4] Total personal consumption expenditures: Insurance
+110 | [SAPCE4] Total personal consumption expenditures: Life insurance
+111 | [SAPCE4] Total personal consumption expenditures: Net household insurance
+112 | [SAPCE4] Total personal consumption expenditures: Net health insurance
+113 | [SAPCE4] Total personal consumption expenditures: Medical care and hospitalization
+114 | [SAPCE4] Total personal consumption expenditures: Income loss
+115 | [SAPCE4] Total personal consumption expenditures: Workers' compensation
+116 | [SAPCE4] Total personal consumption expenditures: Net motor vehicle and other transportation insurance
+117 | [SAPCE4] Total personal consumption expenditures: Other goods and services
+118 | [SAPCE4] Total personal consumption expenditures: Personal care
+119 | [SAPCE4] Total personal consumption expenditures: Personal items
+120 | [SAPCE4] Total personal consumption expenditures: Social services and religious activities
+121 | [SAPCE4] Total personal consumption expenditures: Professional and other services
+122 | [SAPCE4] Total personal consumption expenditures: Legal services
+123 | [SAPCE4] Total personal consumption expenditures: Accounting and other business services
+124 | [SAPCE4] Total personal consumption expenditures: Labor organization dues
+125 | [SAPCE4] Total personal consumption expenditures: Professional association dues
+126 | [SAPCE4] Total personal consumption expenditures: Funeral and burial services
+127 | [SAPCE4] Total personal consumption expenditures: Tobacco
+128 | [SAPCE4] Total personal consumption expenditures: Net foreign travel and expenditures abroad by U.S. residents
+129 | [SAPCE4] Total personal consumption expenditures: Foreign travel by U.S. residents
+130 | [SAPCE4] Total personal consumption expenditures: Less: Expenditures in the United States by nonresidents
+131 | [SAPCE4] Total personal consumption expenditures: Net expenditures abroad by U.S. residents
+132 | [SAPCE4] Total personal consumption expenditures: Final consumption expenditures of nonprofit institutions serving households (NPISHs)
+133 | [SAPCE4] Total personal consumption expenditures: Gross output of nonprofit institutions
+134 | [SAPCE4] Total personal consumption expenditures: Less: Receipts from sales of goods and services by nonprofit institutions
+
+== StatCan 11100222: category labels ==
+columns: ['Statistic', 'Household expenditures, summary-level categories']
+Total expenditure
+Total current consumption
+Food expenditures
+Food purchased from stores
+Bakery products
+Cereal grains and cereal products
+Fruit, fruit preparations and nuts
+Vegetables and vegetable preparations
+Dairy products and eggs
+Meat
+Fish and seafood
+Non-alcoholic beverages and other food products
+Food purchased from restaurants
+Restaurant meals
+Restaurant snacks and beverages
+Shelter
+Principal accommodation
+Rented living quarters
+Rent
+Tenants' repairs and improvements
+Tenants' insurance premiums
+Parking at rented living quarters (excluding amounts reported with rent)
+Owned living quarters
+Mortgage paid for owned living quarters
+Repairs and maintenance for owned living quarters
+Condominium fees for owned living quarters
+Property and school taxes for owned living quarters
+Homeowners' insurance premiums for owned living quarters
+Other expenditures for owned living quarters
+Commissions for sale of real estate owned by the household
+Legal fees related to owned living quarters
+Mortgage insurance premiums for owned living quarters
+Registration fees, renewal fees and early renewal or closing penalties for owned living quarters
+Transfer taxes and land registration fees for owned living quarters
+All other expenses related to owned living quarters (excluding repairs and maintenance)
+Water, fuel and electricity for principal accommodation
+Water and sewage for principal accommodation
+Electricity for principal accommodation
+Natural gas for principal accommodation
+Other fuel for principal accommodation
+Other accommodation
+Owned secondary residences
+Mortgage paid for owned secondary residences
+Property and school taxes, water and sewage charges for owned secondary residences
+Property taxes and sewage charges for owned secondary residences
+Insurance premiums for owned secondary residences
+Electricity and fuel (e.g. natural gas and wood) for owned secondary residences
+Electricity, water and fuel for owned secondary residences
+Communication and home security services (e.g. landline telephone, television, satellite radio and Internet) for owned secondary residences
+Other expenses for owned secondary residences
+Other owned properties
+Accommodation away from home
+Hotels and motels
+Other accommodation away from home
+Household operations
+Communications
+Telephone
+Landline telephone services
+Cell phone and pager services
+Purchase of telephones and equipment
+Internet access services
+Digital services
+Postal, courier and other communication services
+Domestic and other custodial services (excluding child care)
+Pet expenses
+Pet food
+Purchase of pets and pet-related goods
+Veterinarian and other services
+Household cleaning supplies and equipment
+Detergent and other soaps
+Cleaning equipment (non-electric)
+Other household cleaning supplies
+Paper, plastic and foil supplies
+Stationery (excluding school supplies)
+Other paper supplies
+Plastic and foil supplies
+Garden supplies and services
+Nursery and greenhouse stock, cut flowers, decorative plants and planting seeds
+Fertilizers, herbicides, insecticides, pesticides, soil and soil conditioners
+Groundskeeping services, snow and garbage removal
+Other household supplies
+Child care
+Child care outside the home
+Child care in the home (regular and occasional)
+Household furnishings and equipment
+Household furnishings
+Furniture
+Rugs, mats and underpadding
+Art, antiques and decorative ware
+Linens
+Other household furnishings (curtains, mirrors and picture frames)
+Household equipment
+Household appliances
+Refrigerators and freezers
+Microwave ovens
+Cooking appliances
+Washers and dryers
+Dishwashers
+Room air conditioners, portable humidifiers and dehumidifiers
+Other electric equipment and appliances (including parts and attachments)
+Other household equipment
+Home and workshop tools and equipment
+Lawn, garden and snow-removal equipment and tools
+Non-electric kitchen and cooking equipment
+Other household equipment, parts and accessories
+Maintenance, rental, repairs and services related to household furnishings and equipment
+Services related to household furnishings and equipment
+Rental of heating equipment
+Home security services
+Clothing and accessories
+Women's and girls' wear (women and girls aged 4 years and over)
+Clothing (women and girls aged 4 years and over)
+Footwear (women and girls aged 4 years and over)
+Athletic footwear (women and girls aged 4 years and over)
+Other footwear (women and girls aged 4 years and over)
+Accessories (women and girls aged 4 years and over)
+Watches and jewellery (women and girls aged 4 years and over)
+Watches (women and girls aged 4 years and over)
+Jewellery (women and girls aged 4 years and over)
+Men's and boys' wear (men and boys aged 4 years and over)
+Clothing (men and boys aged 4 years and over)
+Footwear (men and boys aged 4 years and over)
+Athletic footwear (men and boys aged 4 years and over)
+Other footwear (men and boys aged 4 years and over)
+Accessories (men and boys aged 4 years and over)
+Watches and jewellery (men and boys aged 4 years and over)
+Watches (men and boys aged 4 years and over)
+Jewellery (men and boys aged 4 years and over)
+Children's wear (children under 4 years)
+Clothing and cloth diapers (children under 4 years)
+Footwear (children under 4 years)
+Gifts of clothing for non-household members
+Clothing material, yarn, thread and other notions
+Clothing services
+Laundry and dry-cleaning services
+Laundromats and self-service dry cleaning
+Services for clothing, footwear and jewellery
+Transportation
+Private transportation
+Private use automobiles, vans and trucks
+Purchase of automobiles, vans and trucks
+Automobiles (purchase)
+Vans (including mini-vans, purchase)
+Trucks (including sport utility vehicles, purchase)
+Accessories for automobiles, vans and trucks
+Fees for leased automobiles, vans and trucks
+Regular fees for leased automobiles, vans and trucks
+Regular fees for leased automobiles
+Regular fees for leased vans and trucks
+Other costs for leased automobiles, vans and trucks (include down payment and closing costs)
+Rented automobiles, vans and trucks
+Automobile, van and truck operations
+Registration fees for automobiles, vans and trucks (including insurance if part of registration)
+Private and public vehicle insurance premiums
+Tires, batteries, and other parts and supplies for vehicles
+Maintenance and repairs of vehicles
+Vehicle security and communication services
+Gas and other fuels (all vehicles and tools)
+Parking (excluding parking fees included in rent and traffic and parking tickets)
+Other automobile, van and truck operation services
+Drivers' licences and tests, and driving lessons
+Drivers' licences and tests
+Driving lessons
+Public transportation
+City or commuter bus, subway, streetcar and commuter train
+Taxi (including tips)
+Other local passenger transportation
+Airplane
+Inter-city bus
+Other inter-city passenger transportation services
+Household moving, storage and delivery services
+Health care
+Direct health care costs to household
+Prescribed medicines and pharmaceutical products
+Non-prescribed medicines, pharmaceutical products, health care supplies and equipment
+Health care services
+Health care practitioners (excluding general practitioners and specialists)
+Health care by general practitioners and specialists
+Weight control programs, smoking cessation programs and other medical services
+Hospital care, nursing homes and other residential care facilities
+Eye-care goods and services
+Prescription eye wear
+Non-prescription eye wear and other eye-care goods
+Eye-care services (e.g. surgery, exams)
+Dental services
+Health insurance premiums
+Public hospital, medical and drug plan premiums
+Private health insurance plan premiums
+Private health care plan premiums
+Dental plan premiums
+Accident or disability insurance premiums
+Personal care
+Personal care products
+Hair care products
+Makeup, skin care, manicure and fragrance products
+Makeup, skin care and manicure products
+Fragrance products
+Personal deodorants
+Body soaps
+Oral hygiene products
+Disposable diapers
+Other personal care supplies and equipment
+Personal care services
+Hair grooming services
+Other personal care services
+Recreation
+Recreational equipment and related services
+Sports, athletic and recreational equipment and related services
+Outdoor play equipment and accessories
+Children's toys
+Video game systems and accessories (excluding for computers)
+Art and craft materials
+Computer equipment and supplies
+Computer hardware
+Computer software and video game systems
+Computer supplies and other equipment
+Tablet computers
+E-Book readers
+Photographic goods and services
+Cameras and accessories
+Photographic services
+Collectors' items (e.g. stamps, coins)
+Other recreational equipment and related services
+Home entertainment equipment and services
+Home entertainment equipment
+Audio equipment
+Video equipment
+Blu-ray players
+DVD players
+Televisions and other video equipment and accessories
+Home theatre systems
+Pre-recorded media, music downloads and blank audio and video media
+Home entertainment services
+Rental of video media
+Maintenance and repairs of electronic and communications equipment
+Recreational services
+Entertainment
+Movie theatres
+Live sporting and performing arts events
+Admission fees to museums, zoos and other sites
+Television and satellite radio services (including installation, service and pay TV charges)
+Rental of cablevision services (including any installation, service and pay TV charges)
+Rental of satellite TV or radio services (including installation, service and pay TV charges)
+Use of recreation facilities
+Dues and fees for sports and recreation facilities
+Children's camps
+Package trips
+Other recreational activities and services
+Recreational vehicles and associated services
+Purchase of recreational vehicles
+Motorcycles and snowmobiles (purchase)
+All-terrain vehicles (purchase)
+Bicycles (purchase), parts and accessories
+Other recreational vehicles (purchase)
+Operation of recreational vehicles
+Insurance premiums for recreational vehicles
+Registration fees and licences for recreational vehicles
+Parking, storage fees and other dues
+Other expenses for recreational vehicles
+Education
+Tuition fees
+Tuition fees for kindergarten, elementary and secondary schools
+Tuition fees for university
+Tuition fees for other training (college, trade and professional institutions)
+Other educational services
+Personal interest courses and lessons (excluding driving lessons)
+Textbooks and school supplies
+Reading materials and other printed matter
+Newspapers
+Magazines and periodicals
+Books and E-Books (excluding school books)
+Maps, sheet music and other printed matter
+Services related to reading materials (e.g. photocopying, library fees)
+Tobacco products and alcoholic beverages
+Tobacco products and smokers' supplies
+Cigarettes
+Other tobacco products and smokers' supplies
+Alcoholic beverages
+Alcoholic beverages served on licensed premises and in restaurants
+Alcoholic beverages purchased from stores
+Self-made alcoholic beverages
+Games of chance
+Government-run lotteries
+Other games of chance
+Casinos, bingos and gaming machines
+Non-government lotteries and raffle tickets
+Miscellaneous expenditures
+Financial services
+Service charges for banks and other financial institutions
+Stock and bond commissions
+Brokerage fees and other similar services
+Other financial services
+Other miscellaneous goods and services
+Forfeit of deposits, fines, and money lost or stolen
+Legal services not related to dwellings
+Dues to unions and professional associations
+Contributions and dues for social clubs and other organizations
+Funeral services
+Government services
+Wholesale/retail memberships
+Other goods and services
+Discounts and refunds
+Recycling fees and other environmental fees
+Other general expenditures
+Income taxes
+Personal insurance payments and pension contributions
+Employment insurance and Quebec parental insurance premiums
+Retirement and pension fund payments
+Annuity contracts and transfers to RRIFs
+Premiums on life, term and endowment insurance
+Gifts of money, support payments and charitable contributions
+Gifts of money and support payments
+Gifts of money to persons living in Canada
+Gifts of money to persons living outside Canada
+Alimony and child support
+Charitable contributions
+Wearable electronic devices
+Electronic cigarettes and supplies for electronic cigarettes
+Postal, courier, delivery and other communication services
+Works of art, carvings and other decorative ware
+Microwave ovens and cooking appliances
+Washers, dryers and dishwashers
+Women's and girls' wear (women and girls aged 14 years and over)
+Clothing (women and girls aged 14 years and over)
+Footwear (women and girls aged 14 years and over)
+Men's and boys' wear (men and boys aged 14 years and over)
+Clothing (men and boys aged 14 years and over)
+Footwear (men and boys aged 14 years and over)
+Children's wear (children under 14 years of age)
+Clothing and cloth diapers (children under 14 years of age)
+Footwear (children under 14 years of age)
+Athletic footwear
+Accessories
+Watches and jewellery
+Laundromats, dry-cleaning and laundry services
+Vehicle operation, security and communication services
+Peer-to-peer ride services
+Household moving and storage services
+Prescribed medicines, pharmaceutical products and cannabis for medical use
+Cannabis for medical use
+Private health and dental plan premiums
+Camcorders, cameras, parts, accessories and related equipment
+Other recreational equipment
+Audio equipment and home theatre systems
+DVD players, Blu-Ray players and other video equipment and accessories
+Televisions
+Rental of videotapes, DVDs and video games
+Rental, maintenance, repair and services related to computers, phones, audio, video and other electronic equipment
+Use of recreational facilities and fees for other recreational activities
+Dues and fees for sports and recreational activities and athletic and recreational facilities
+Water parks and amusement parks
+Other recreational services
+Bicycles (purchase)
+Tobacco products, alcoholic beverages and cannabis for non-medical use
+Other tobacco products, smokers' supplies and e-cigarettes
+Cannabis for non-medical use
+Administration fees for brokers and stock and bond commissions
+Fines
+Ready-to-cook meal delivery services
+Pet food and pet-related goods
+Purchase of pets
+Convenience fees
+Charging expenses for electric vehicles

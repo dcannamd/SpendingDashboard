@@ -434,6 +434,10 @@ function render() {
   $("#f-region").value = state.region;
   renderMap(); renderSel(); renderRegion(); renderTrend(); renderMomentum(); renderSummary(); renderTable();
   document.querySelectorAll("[data-trend]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.trend === state.trend)));
+  // Lets detail.js follow the selectors without touching this file's state.
+  window.__dashLast = { region: state.region, year: state.year, real: state.real,
+                        regions: D.regions, cats: D.categories };
+  window.dispatchEvent(new CustomEvent("dash:render", { detail: window.__dashLast }));
 }
 
 function init(data) {

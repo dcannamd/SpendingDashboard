@@ -18,7 +18,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import fetch_bea, fetch_cpi, fetch_statcan
+from . import fetch_bea, fetch_cpi, fetch_detail, fetch_statcan
 from .common import BREAK_YEARS, CATEGORIES, CATEGORY_IDS
 from .regions import all_regions
 
@@ -26,6 +26,8 @@ ROOT = Path(__file__).resolve().parent.parent
 HISTORY = ROOT / "data" / "history.csv"
 CPI_CACHE = ROOT / "data" / "cpi.json"
 OUTPUT = ROOT / "web" / "data" / "spending.json"
+DETAIL_OUT = ROOT / "web" / "data" / "detail.json"
+DETAIL_REPORT = ROOT / "data" / "detail_report.txt"
 FIELDS = ["region", "country", "category", "year", "value", "basis", "currency", "source"]
 
 FETCHERS = [("BEA (US)", fetch_bea.fetch), ("Statistics Canada", fetch_statcan.fetch)]
@@ -117,9 +119,38 @@ def write_output(payload):
     OUTPUT.write_text(json.dumps(payload, separators=(",", ":")))
 
 
+def build_detail(history, cpi, base_year):
+    """Product-area detail. Fail-soft: never stops or alters the main build."""
+    try:
+        payload, report = fetch_detail.build(history, cpi, base_year)
+        DETAIL_REPORT.parent.mkdir(parents=True, exist_ok=True)
+        DETAIL_REPORT.write_text(report + "\n")
+        if payload is None:
+            log.error("Detail: nothing built (see %s)", DETAIL_REPORT)
+            return
+        DETAIL_OUT.write_text(json.dumps(payload, separators=(",", ":")))
+        log.info("Wrote %s (%d areas, %d rows). Report: %s", DETAIL_OUT,
+                 len(payload["areas"]), len(payload["rows"]), DETAIL_REPORT)
+    except Exception as e:  # noqa: BLE001
+        log.error("Detail failed, main dashboard unaffected: %s", e)
+
+
+def load_cpi_cache():
+    cpi = json.loads(CPI_CACHE.read_text()) if CPI_CACHE.exists() else {}
+    return {c: {int(y): v for y, v in d.items()} for c, d in cpi.items()}
+
+
 def main():
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     history = load_history()
+    if "--detail-only" in sys.argv:
+        # Rebuild only the product-area file from the saved history and CPI.
+        cpi = load_cpi_cache()
+        if not history or not cpi:
+            log.error("Run the full build once first (needs data/history.csv and data/cpi.json).")
+            return 1
+        build_detail(history, cpi, derive(history, cpi)["meta"]["base_year"])
+        return 0
     new, failures = [], []
     for name, fn in FETCHERS:
         try:
@@ -144,8 +175,10 @@ def main():
         failures.append("CPI")
     cpi = {c: {int(y): v for y, v in d.items()} for c, d in cpi.items()}
 
-    write_output(derive(history, cpi))
+    payload = derive(history, cpi)
+    write_output(payload)
     log.info("Wrote %s", OUTPUT)
+    build_detail(history, cpi, payload["meta"]["base_year"])
     return 1 if failures and not new else 0
 
 

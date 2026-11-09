@@ -94,6 +94,25 @@
     <div id="momentum"></div>
   </section>
 
+  <section class="card" id="detail-card" aria-labelledby="det-h" hidden>
+    <h2 id="det-h">Product areas</h2>
+    <p class="hint" id="det-hint"></p>
+    <div id="det-lead" class="det-lead"></div>
+    <div class="controls det-controls">
+      <label>Category <select id="d-group"></select></label>
+      <label>Sort by
+        <select id="d-sort">
+          <option value="growth">Fastest real spend growth</option>
+          <option value="shift">Biggest rise in budget share</option>
+          <option value="index">Most over-indexed here</option>
+          <option value="share">Largest share of budget</option>
+        </select>
+      </label>
+    </div>
+    <div id="det-body" class="scroll"></div>
+    <div id="det-focus"></div>
+  </section>
+
   <details class="card table-view">
     <summary>Table view of the current map</summary>
     <div id="table"></div>
@@ -104,5 +123,6 @@
 
 <div id="tip" class="tip" role="status" hidden></div>
 <script src="app.js"></script>
+<script src="detail.js"></script>
 </body>
 </html>

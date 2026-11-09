@@ -167,3 +167,34 @@ tr[data-cat]:hover, tr.sel { background: var(--grid); }
 .howto ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; color: var(--ink2); }
 .howto b { color: var(--ink); }
 @media (max-width: 640px) { .sum-text p { font-size: 14px; } .summary .intro { font-size: 13px; } }
+
+/* ---------- product areas ---------- */
+.det-lead { display: grid; gap: 6px; margin: 4px 0 12px; border-left: 3px solid var(--s1); padding-left: 12px; }
+.det-lead p { margin: 0; font-size: 14px; line-height: 1.5; }
+.det-controls { margin: 4px 0 8px; }
+#det-body { max-height: 520px; overflow: auto; border-top: 1px solid var(--grid); }
+#det-body table { min-width: 560px; }
+#det-body thead th { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+#det-body tr[data-area] { cursor: pointer; }
+#det-body tr[data-area]:hover, #det-body tr[data-area].sel { background: var(--grid); }
+#det-body tr[data-area]:focus-visible { outline: 2px solid var(--s1); outline-offset: -2px; }
+.sub2 { display: block; font-size: 11px; color: var(--muted); }
+.pos { color: var(--pos); } .neg { color: var(--neg); }
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: var(--neutral); color: var(--ink2); }
+.badge.rising { background: var(--seq-lo); color: var(--seq-hi); }
+.badge.falling { background: var(--warn-bg); color: var(--warn-ink); }
+.focus { margin-top: 14px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
+.focus h3 { margin: 0 0 2px; font-size: 15px; }
+.focus h4 { margin: 12px 0 4px; font-size: 13px; }
+.spark svg { width: 100%; height: auto; display: block; }
+.toplist { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13px; }
+.toplist li { display: flex; justify-content: space-between; gap: 10px; padding: 4px 6px; border-radius: 6px; }
+.toplist li.me { background: var(--grid); font-weight: 600; }
+.toplist li span:last-child { color: var(--ink2); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .hide-s { display: none; }
+  .det-controls { grid-template-columns: 1fr; }
+  #det-body { max-height: 460px; }
+  #det-body table { min-width: 460px; }
+}
+.badge.small { background: transparent; border: 1px dashed var(--axis); color: var(--muted); }
