@@ -155,3 +155,15 @@ tr[data-cat]:hover, tr.sel { background: var(--grid); }
   th, td { padding: 10px 6px; }
   .legend { max-width: none; }
 }
+
+/* ---------- plain-English summary ---------- */
+.summary .intro { margin: 4px 0 12px; color: var(--ink2); font-size: 14px; }
+.sum-text { border-left: 3px solid var(--s1); padding: 2px 0 2px 12px; display: grid; gap: 8px; }
+.sum-text p { margin: 0; font-size: 15px; line-height: 1.55; }
+.sum-text b { font-weight: 650; }
+.sum-text .warn { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 8px 10px; font-size: 13px; }
+.howto { margin-top: 12px; font-size: 13px; }
+.howto summary { cursor: pointer; font-weight: 600; color: var(--ink2); min-height: 28px; }
+.howto ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; color: var(--ink2); }
+.howto b { color: var(--ink); }
+@media (max-width: 640px) { .sum-text p { font-size: 14px; } .summary .intro { font-size: 13px; } }

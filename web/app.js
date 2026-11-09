@@ -7,6 +7,7 @@ const state = { cat: "recreation", metric: "index", bench: "country", real: true
 let D, years = [], regionsByCode = new Map();
 const rows = new Map();
 const benchCache = new Map();
+let lastMomentum = [];   // category momentum rows, shared with the summary
 
 const esc = (s) => String(s).replace(/[&<>"']/g,
   (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -296,6 +297,70 @@ function renderTrend() {
   hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hideTip(); });
 }
 
+/* ---------- plain-English summary ---------- */
+const ordinal = (n) => { const s = ["th", "st", "nd", "rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); };
+
+function renderSummary() {
+  const code = state.region, reg = regionsByCode.get(code), cat = state.cat, y = state.year;
+  const el = $("#sum-text"), name = esc(reg.name), cn = esc(catLabel(cat).toLowerCase());
+  const a = get(code, cat, y);
+  if (!a) { el.innerHTML = `<p>There is no ${cn} data for <b>${name}</b> in ${y}. Try another year or region.</p>`; return; }
+  const u = D.units[reg.country];
+  const scope = state.bench === "country" ? reg.country : "";
+  const avgName = scope === "US" ? "US" : scope === "CA" ? "Canadian" : "North American";
+  const noun = scope === "US" ? "states" : scope === "CA" ? "provinces" : "regions";
+
+  // How big is this category here, and how does it compare with the average?
+  const idx = metricVal(code, cat, y, "index");
+  const diff = idx == null ? 0 : idx - 100;
+  const rel = idx == null ? "" : Math.abs(diff) < 3 ? `about the same as the ${avgName} average`
+    : `${Math.abs(Math.round(diff))}% ${diff > 0 ? "more" : "less"} than the ${avgName} average`;
+  let p1 = `In ${y}, households in <b>${name}</b> spent about <b>${a.share.toFixed(1)}%</b> of their budget on ${cn}` + (rel ? `, ${rel}.` : ".");
+
+  // Where does it rank, and what is the range?
+  const list = D.regions.filter((r) => !scope || r.country === scope)
+    .map((r) => ({ r, s: get(r.code, cat, y)?.share })).filter((o) => o.s != null).sort((p, q) => q.s - p.s);
+  const rank = list.findIndex((o) => o.r.code === code) + 1;
+  if (list.length > 2 && rank) {
+    const hi = list[0], lo = list[list.length - 1];
+    p1 += ` That ${rank === 1 ? "is the highest" : rank === list.length ? "is the lowest" : "ranks " + ordinal(rank) + " from the highest"} of ${list.length} ${noun}` +
+      `; the range runs from ${lo.s.toFixed(1)}% in ${esc(lo.r.name)} to ${hi.s.toFixed(1)}% in ${esc(hi.r.name)}.`;
+  }
+  const own = D.categories.map((c) => ({ c, s: get(code, c.id, y)?.share })).filter((o) => o.s != null).sort((p, q) => q.s - p.s);
+  const crank = own.findIndex((o) => o.c.id === cat) + 1;
+  if (crank) p1 += ` It is ${name}'s ${crank === 1 ? "biggest" : ordinal(crank) + "-biggest"} spending category out of ${own.length}.`;
+
+  // Which way is it moving?
+  let p2 = "", dsh = null, g = null;
+  const pr = prior(code, cat, y);
+  if (pr) {
+    const chg = a.share - pr.p.share;
+    dsh = (chg * 5) / pr.gap;
+    p2 = Math.abs(chg) < 0.15 ? `Since ${y - pr.gap}, that share has barely changed.`
+      : `Since ${y - pr.gap}, that share has ${chg > 0 ? "risen" : "fallen"} by ${Math.abs(chg).toFixed(1)} percentage points.`;
+    const s1 = spend(a), s0 = spend(pr.p);
+    if (s1 != null && s0) {
+      g = (Math.pow(s1 / s0, 1 / pr.gap) - 1) * 100;
+      p2 += ` ${state.real ? "After removing inflation, spending" : "In nominal dollars (not adjusted for inflation), spending"} ` +
+        `${g >= 0 ? "grew" : "shrank"} about ${Math.abs(g).toFixed(1)}% a year, to roughly ${Math.round(s1).toLocaleString()} ${u.currency} ${u.basis}.`;
+    }
+  }
+  if (state.real && dsh != null && g != null) {
+    p2 += dsh > 0.3 && g > 1 ? ` A rising share and rising real spending suggest demand for ${cn} is growing here.`
+      : dsh < -0.3 && g < 0 ? ` A falling share and falling real spending suggest demand for ${cn} is weakening here.`
+      : ` The signals are mixed, so ${cn} looks steady here rather than clearly growing or shrinking.`;
+  }
+
+  // The wider picture for the same scope.
+  const scopeLabel = scope === "US" ? "the United States" : scope === "CA" ? "Canada" : "both countries";
+  const m = lastMomentum.filter((i) => i.dshare != null);
+  const p3 = m.length > 1
+    ? `<p><b>Big picture for ${scopeLabel}:</b> over roughly five years, ${esc(m[0].label.toLowerCase())} has gained the most budget share ` +
+      `(${signed(m[0].dshare, 1)} points on average) and ${esc(m[m.length - 1].label.toLowerCase())} has lost the most (${signed(m[m.length - 1].dshare, 1)} points).</p>` : "";
+  const warn = scope ? "" : `<p class="warn">You are comparing both countries together, but US and Canadian figures are measured differently, so treat this with caution. Choose "Own country" under "Compare against" for a like-for-like view.</p>`;
+  el.innerHTML = `<p>${p1}</p>` + (p2 ? `<p>${p2}</p>` : "") + p3 + warn;
+}
+
 /* ---------- momentum + table ---------- */
 function median(a) { if (!a.length) return null; a = a.slice().sort((p, q) => p - q); const m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; }
 
@@ -320,6 +385,7 @@ function renderMomentum() {
     const mean = (v) => v.length ? v.reduce((s, q) => s + q, 0) / v.length : null;
     return { id: c.id, label: c.label, share: mean(sh), dshare: mean(dsh), growth: median(gr) };
   }).sort((a, b) => (b.dshare ?? -99) - (a.dshare ?? -99));
+  lastMomentum = items;
   $("#momentum").innerHTML = `<div class="scroll"><table><thead><tr><th>Category</th><th class="n">Avg share of budget</th>` +
     `<th class="n">5-yr change (pts)</th><th class="n">Median real spend growth (% a year)</th></tr></thead><tbody>` +
     items.map((i) => `<tr data-cat="${i.id}" tabindex="0" class="${i.id === state.cat ? "sel" : ""}"><td>${esc(i.label)}</td>` +
@@ -366,7 +432,7 @@ function render() {
   benchCache.clear();
   $("#f-cat").value = state.cat;
   $("#f-region").value = state.region;
-  renderMap(); renderSel(); renderRegion(); renderTrend(); renderMomentum(); renderTable();
+  renderMap(); renderSel(); renderRegion(); renderTrend(); renderMomentum(); renderSummary(); renderTable();
   document.querySelectorAll("[data-trend]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.trend === state.trend)));
 }
 
