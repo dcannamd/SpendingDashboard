@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>North America Spending Explorer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>North America Spending Explorer</h1>
+  <p class="sub">Where households spend more or less than average, by state and province, and how that is changing.</p>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+
+<main id="app">
+  <section class="controls" aria-label="Filters">
+    <label>Category <select id="f-cat"></select></label>
+    <label>Region <select id="f-region"></select></label>
+    <label>View
+      <select id="f-metric">
+        <option value="index">Over/under-index vs average</option>
+        <option value="share">Share of budget (%)</option>
+        <option value="dshare">5-yr change in share (pts)</option>
+        <option value="growth">5-yr spend growth (% a year)</option>
+      </select>
+    </label>
+    <label>Compare against
+      <select id="f-bench">
+        <option value="all">All North America</option>
+        <option value="country">Own country</option>
+      </select>
+    </label>
+    <label>Year <select id="f-year"></select></label>
+    <label>Dollars
+      <select id="f-real">
+        <option value="real">Inflation-adj.</option>
+        <option value="nominal">Nominal</option>
+      </select>
+    </label>
+  </section>
+
+  <div class="grid">
+    <section class="card map-card" aria-labelledby="map-h">
+      <h2 id="map-h"></h2>
+      <p class="hint" id="map-hint"></p>
+      <div id="sel" class="readout" aria-live="polite"></div>
+      <div id="maps"></div>
+      <div class="legend" id="legend" aria-hidden="true"></div>
+    </section>
+
+    <div class="side">
+      <section class="card" aria-labelledby="reg-h">
+        <h2 id="reg-h"></h2>
+        <p class="hint" id="reg-hint"></p>
+        <div id="bars"></div>
+      </section>
+
+      <section class="card" aria-labelledby="tr-h">
+        <div class="card-head">
+          <h2 id="tr-h"></h2>
+          <div class="seg" role="group" aria-label="Trend measure">
+            <button type="button" data-trend="share" aria-pressed="true">Share</button>
+            <button type="button" data-trend="spend" aria-pressed="false">Spend</button>
+          </div>
+        </div>
+        <div class="legend-inline" id="tr-legend"></div>
+        <div class="chart" id="trend"></div>
+      </section>
+    </div>
+  </div>
+
+  <section class="card" aria-labelledby="mom-h">
+    <h2 id="mom-h">Category momentum, all North America</h2>
+    <p class="hint">Averages across regions. Click a row to explore that category. Fast-rising share plus rising real spend is where demand is growing.</p>
+    <div id="momentum"></div>
+  </section>
+
+  <details class="card table-view">
+    <summary>Table view of the current map</summary>
+    <div id="table"></div>
+  </details>
+
+  <footer class="notes" id="notes"></footer>
+</main>
+
+<div id="tip" class="tip" role="status" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

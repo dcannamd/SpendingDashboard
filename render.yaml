@@ -1,0 +1,26 @@
+# Render Blueprint: New > Blueprint > pick this repo.
+services:
+  # The dashboard: plain static files from web/
+  - type: web
+    runtime: static
+    name: spending-dashboard
+    staticPublishPath: web
+    buildCommand: echo "static site"
+
+  # Weekly data refresh. Commits new data to GitHub, which redeploys the site.
+  - type: cron
+    name: spending-data-refresh
+    runtime: python
+    plan: starter          # cron jobs are a paid service; check Render pricing
+    schedule: "0 12 * * 1" # Mondays 12:00 UTC
+    buildCommand: echo "no build"
+    startCommand: bash pipeline/run_job.sh
+    envVars:
+      - key: GITHUB_REPO   # e.g. yourname/spending-dashboard
+        sync: false
+      - key: GITHUB_TOKEN  # fine-grained token, Contents: read & write
+        sync: false
+      - key: BEA_API_KEY   # https://apps.bea.gov/API/signup/
+        sync: false
+      - key: BLS_API_KEY   # optional, raises BLS rate limits
+        sync: false
