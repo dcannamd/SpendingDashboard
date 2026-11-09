@@ -37,8 +37,9 @@ def us_cpi():
             elif p.startswith("M"):
                 months[y][p] = v
     for y, m in months.items():
-        if y not in annual and len(m) == 12:   # only complete years
-            annual[y] = sum(m.values()) / 12
+        # Accept 11 months: BLS never published October 2025 (government shutdown).
+        if y not in annual and len(m) >= 11:
+            annual[y] = sum(m.values()) / len(m)
     return annual
 
 

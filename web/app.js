@@ -2,7 +2,7 @@
 "use strict";
 
 const $ = (s) => document.querySelector(s);
-const state = { cat: "recreation", metric: "index", bench: "all", real: true,
+const state = { cat: "recreation", metric: "index", bench: "country", real: true,
                 year: null, region: null, trend: "share" };
 let D, years = [], regionsByCode = new Map();
 const rows = new Map();
@@ -12,7 +12,7 @@ const esc = (s) => String(s).replace(/[&<>"']/g,
   (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const cssv = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const num = (v, d = 1) => (v == null || Number.isNaN(v) ? "–" : v.toFixed(d));
-const signed = (v, d = 1) => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d));
+const signed = (v, d = 1) => { if (v == null) return "–"; const r = +v.toFixed(d); return (r > 0 ? "+" : r < 0 ? "−" : "") + Math.abs(r).toFixed(d); };
 const catLabel = (id) => D.categories.find((c) => c.id === id).label;
 
 /* ---------- data access ---------- */
@@ -60,11 +60,17 @@ function metricVal(code, cat = state.cat, y = state.year, metric = state.metric)
     const b = benchFor(code, cat, y);
     return b ? (r.share / b) * 100 : null;
   }
-  const p = get(code, cat, y - 5);
-  if (!p) return null;
-  if (metric === "dshare") return r.share - p.share;
-  const a = spend(r), b = spend(p);
-  return a != null && b ? (Math.pow(a / b, 1 / 5) - 1) * 100 : null;
+  const pr = prior(code, cat, y);
+  if (!pr) return null;
+  if (metric === "dshare") return ((r.share - pr.p.share) * 5) / pr.gap;   // scaled to a 5-year equivalent
+  const a = spend(r), b = spend(pr.p);
+  return a != null && b ? (Math.pow(a / b, 1 / pr.gap) - 1) * 100 : null;
+}
+
+// The record about 5 years before year y. Falls back to 4 or 6 years back when a year was skipped.
+function prior(code, cat, y) {
+  for (const gap of [5, 4, 6]) { const p = get(code, cat, y - gap); if (p) return { p, gap }; }
+  return null;
 }
 
 /* ---------- colour ---------- */
@@ -145,7 +151,8 @@ function renderMap() {
 
   $("#map-h").textContent = `${catLabel(state.cat)}: ${M.label.toLowerCase()}, ${state.year}`;
   $("#map-hint").textContent = state.metric === "index"
-    ? `Blue = households spend a bigger share here than the ${state.bench === "all" ? "North American" : "country"} average; red = smaller. Click a tile for detail.`
+    ? `Blue = households spend a bigger share here than the ${state.bench === "all" ? "North American" : "country"} average; red = smaller. Click a tile for detail.` +
+      (state.bench === "all" ? " Caution: US and Canadian budget shares are measured differently, so this mixes unlike numbers." : "")
     : "Click a tile for detail. Grey tiles have no data.";
 
   if (sc) {
@@ -250,11 +257,15 @@ function renderTrend() {
   years.forEach((y, i) => { if ((years.length - 1 - i) % tickEvery === 0) g += `<text x="${x(y)}" y="${H - 8}" text-anchor="middle">${y}</text>`; });
   g += `<line x1="${L}" x2="${W - R}" y1="${H - Bm}" y2="${H - Bm}" stroke="var(--axis)"/>`;
 
-  const path = (arr) => { let d = "", pen = false;
-    arr.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + x(years[i]).toFixed(1) + " " + yy(v).toFixed(1); pen = true; });
+  // Join the points that exist, even across a skipped year (the Canadian survey skips some).
+  const path = (arr) => { let d = "";
+    arr.forEach((v, i) => { if (v != null) d += (d ? "L" : "M") + x(years[i]).toFixed(1) + " " + yy(v).toFixed(1); });
     return d; };
   g += `<path d="${path(B)}" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4"/>`;
   g += `<path d="${path(A)}" fill="none" stroke="var(--s1)" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>`;
+  if (A.some((v) => v == null)) {   // sparse series: mark the years that really have data
+    A.forEach((v, i) => { if (v != null) g += `<circle cx="${x(years[i]).toFixed(1)}" cy="${yy(v).toFixed(1)}" r="3" fill="var(--s1)"/>`; });
+  }
   const last = (arr) => { for (let i = arr.length - 1; i >= 0; i--) if (arr[i] != null) return [years[i], arr[i]]; return null; };
   const la = last(A), lb = last(B);
   if (la) g += `<text class="lbl" x="${x(la[0]) + 6}" y="${yy(la[1]) + (lb && Math.abs(yy(lb[1]) - yy(la[1])) < 12 && lb[1] > la[1] ? 10 : 4)}">${fmtY(la[1])}</text>`;
@@ -290,16 +301,20 @@ function median(a) { if (!a.length) return null; a = a.slice().sort((p, q) => p 
 
 function renderMomentum() {
   const y = state.year;
+  const scope = state.bench === "country" ? countryOf(state.region) : "";
+  const scopeName = scope === "US" ? "United States" : scope === "CA" ? "Canada" : "both countries";
+  $("#mom-h").textContent = `Category momentum, ${scopeName}`;
   const items = D.categories.map((c) => {
     const sh = [], dsh = [], gr = [];
     for (const r of D.regions) {
+      if (scope && r.country !== scope) continue;
       const a = get(r.code, c.id, y); if (!a) continue;
       sh.push(a.share);
-      const p = get(r.code, c.id, y - 5);
-      if (p) {
-        dsh.push(a.share - p.share);
-        const s1 = spend(a), s0 = spend(p);
-        if (s1 != null && s0) gr.push((Math.pow(s1 / s0, 1 / 5) - 1) * 100);
+      const pr = prior(r.code, c.id, y);
+      if (pr) {
+        dsh.push(((a.share - pr.p.share) * 5) / pr.gap);
+        const s1 = spend(a), s0 = spend(pr.p);
+        if (s1 != null && s0) gr.push((Math.pow(s1 / s0, 1 / pr.gap) - 1) * 100);
       }
     }
     const mean = (v) => v.length ? v.reduce((s, q) => s + q, 0) / v.length : null;
@@ -359,13 +374,20 @@ function init(data) {
   D = data;
   regionsByCode = new Map(D.regions.map((r) => [r.code, r]));
   const counts = new Map();
+  const byCountry = {};   // country -> Map(year -> number of regions with data)
   for (const [reg, cat, y, share, nominal, real] of D.rows) {
     rows.set(reg + "|" + cat + "|" + y, { share, nominal, real });
-    if (cat === D.categories[0].id) counts.set(y, (counts.get(y) || 0) + 1);
+    if (cat === D.categories[0].id) {
+      counts.set(y, (counts.get(y) || 0) + 1);
+      const c = reg.slice(0, 2);
+      if (!byCountry[c]) byCountry[c] = new Map();
+      byCountry[c].set(y, (byCountry[c].get(y) || 0) + 1);
+    }
   }
   years = [...counts.keys()].sort((a, b) => a - b);
-  const maxN = Math.max(...counts.values());
-  state.year = [...years].reverse().find((y) => counts.get(y) >= 0.8 * maxN) || years[years.length - 1];
+  // Open on the latest year where every country has (nearly) full coverage, so no country is blank.
+  const full = (y) => Object.values(byCountry).every((m) => (m.get(y) || 0) >= 0.8 * Math.max(...m.values()));
+  state.year = [...years].reverse().find(full) || years[years.length - 1];
   const present = new Set(D.present);
   state.region = ["CA-ON", "US-CA"].find((c) => present.has(c)) || D.present[0];
   if (!D.categories.some((c) => c.id === state.cat)) state.cat = D.categories[0].id;
@@ -389,10 +411,10 @@ function init(data) {
   $("#notes").innerHTML =
     `<div>Sources: ${D.meta.sources.map(esc).join("; ")}. Generated ${esc(D.meta.generated.slice(0, 10))}. Latest year: ` +
     Object.entries(latest).map(([c, y]) => `${c} ${y}`).join(", ") + ".</div>" +
-    "<div>Official spending data is annual and lags by 1 to 2 years, so this shows structural patterns, not this month's sales.</div>" +
+    "<div>Official spending data is annual and lags by 1 to 2 years, so this shows structural patterns, not this month's sales. Where the Canadian survey skipped a year, 5-year changes use the nearest year 4 to 6 years back.</div>" +
     "<div>US figures are dollars per person (BEA); Canadian figures are dollars per household (Statistics Canada). " +
     "Regions are compared by share of budget and index, never by raw dollars across countries. Averages weight every region equally.</div>" +
-    "<div>Categories are matched across agencies approximately (for example, US food includes restaurants and hotels; Canadian food does not split them), so small cross-country gaps can be definitional.</div>";
+    "<div><strong>US and Canadian shares are not like-for-like.</strong> US figures (BEA) cover all consumer spending, including health care paid by insurers and government and the imputed rent of owner-occupied homes. Canadian figures (Statistics Canada) are what households report spending themselves. So the default compares each region with its own country, and trends within one region are the most reliable view.</div>";
 
   $("#f-cat").onchange = (e) => { state.cat = e.target.value; render(); };
   $("#f-region").onchange = (e) => { state.region = e.target.value; render(); };
