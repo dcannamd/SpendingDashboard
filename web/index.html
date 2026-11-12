@@ -113,6 +113,25 @@
     <div id="det-focus"></div>
   </section>
 
+  <section class="card" id="gt-card" aria-labelledby="gt-h" hidden>
+    <h2 id="gt-h">Search interest</h2>
+    <p class="hint" id="gt-hint"></p>
+    <div id="gt-lead" class="det-lead"></div>
+    <div class="controls det-controls">
+      <label>Group <select id="gt-group"></select></label>
+      <label>Sort by
+        <select id="gt-sort">
+          <option value="growth">Fastest 1-year growth</option>
+          <option value="growth3">Fastest 3-year growth</option>
+          <option value="level">Most searched</option>
+          <option value="region">Strongest in my region</option>
+        </select>
+      </label>
+    </div>
+    <div id="gt-body" class="scroll"></div>
+    <div id="gt-focus"></div>
+  </section>
+
   <details class="card table-view">
     <summary>Table view of the current map</summary>
     <div id="table"></div>
@@ -124,5 +143,6 @@
 <div id="tip" class="tip" role="status" hidden></div>
 <script src="app.js"></script>
 <script src="detail.js"></script>
+<script src="trends.js"></script>
 </body>
 </html>

@@ -198,3 +198,19 @@ tr[data-cat]:hover, tr.sel { background: var(--grid); }
   #det-body table { min-width: 460px; }
 }
 .badge.small { background: transparent; border: 1px dashed var(--axis); color: var(--muted); }
+
+/* ---------- search interest (Google Trends) ---------- */
+#gt-body { max-height: 520px; overflow: auto; border-top: 1px solid var(--grid); }
+#gt-body table { min-width: 560px; }
+#gt-body thead th { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+#gt-body tr[data-term] { cursor: pointer; }
+#gt-body tr[data-term]:hover, #gt-body tr[data-term].sel { background: var(--grid); }
+#gt-body tr[data-term]:focus-visible { outline: 2px solid var(--s1); outline-offset: -2px; }
+#gt-body td.n svg { display: block; margin-left: auto; }
+.lvl { display: inline-block; width: 60px; height: 8px; background: var(--grid); border-radius: 4px; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.lvl i { display: block; height: 100%; background: var(--s1); border-radius: 4px; }
+.gt-chart svg { display: block; }
+.gt-chart text { font-family: inherit; fill: var(--muted); font-size: 11px; }
+.focus .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+@media (max-width: 640px) { #gt-body table { min-width: 420px; } .focus .two { grid-template-columns: 1fr; } }
+.lvn { display: inline-block; min-width: 26px; text-align: right; }

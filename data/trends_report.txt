@@ -1,0 +1,48 @@
+== CA ==
+Anchor 'grab bars' average per batch (Google's 0-100 scale): 44.8, 54.4, 47.4, 44.0, 54.4, 30.8
+grab bars                level  74.3  1yr   25.3  3yr   42.2  regions=13
+shower chair             level  84.1  1yr   23.1  3yr   41.1  regions=13
+shower stool             level  22.0  1yr   42.3  3yr   27.9  regions=13
+transfer bench           level  39.4  1yr   93.3  3yr   78.6  regions=13
+raised toilet seat       level  34.9  1yr    7.3  3yr    4.6  regions=13
+sock aid                 level   1.3  1yr   None  3yr   None  LOW VOLUME regions=13
+button hook              level   4.8  1yr   None  3yr   None  LOW VOLUME regions=13
+adaptive clothing        level  18.1  1yr   89.2  3yr   -1.1  regions=13
+built up handle utensils level   0.0  1yr   None  3yr   None  LOW VOLUME regions=13
+rocker knife             level   0.1  1yr   None  3yr   None  LOW VOLUME regions=13
+jar opener               level  17.9  1yr   46.0  3yr   -7.1  regions=13
+reacher grabber tool     level   0.5  1yr   None  3yr   None  LOW VOLUME regions=13
+pill organizer           level  62.5  1yr   39.9  3yr   88.3  regions=13
+one handed kitchen tools level   0.0  1yr   None  3yr   None  LOW VOLUME regions=13
+bed rails for seniors    level   0.1  1yr   None  3yr   None  LOW VOLUME regions=13
+bed assist rail          level   0.1  1yr   None  3yr   None  LOW VOLUME regions=13
+rollator                 level 100.0  1yr    7.9  3yr   24.4  regions=13
+walking cane             level  57.2  1yr   21.5  3yr   18.9  regions=13
+walker basket            level   0.6  1yr   None  3yr   None  LOW VOLUME regions=13
+cane with seat           level   0.1  1yr   None  3yr   None  LOW VOLUME regions=13
+wheelchair cushion       level   7.3  1yr   None  3yr   None  regions=13
+aging in place           level  26.0  1yr  255.7  3yr  310.9  regions=13
+== US ==
+Anchor 'grab bars' average per batch (Google's 0-100 scale): 11.7, 73.2, 45.4, 24.2, 59.5, 36.5
+grab bars                level  39.1  1yr   11.6  3yr   22.4  regions=51
+shower chair             level 100.0  1yr   87.4  3yr   85.3  regions=51
+shower stool             level  19.6  1yr   69.1  3yr   71.6  regions=51
+transfer bench           level  20.6  1yr   55.3  3yr   65.0  regions=51
+raised toilet seat       level  12.9  1yr   26.9  3yr   16.7  LOW VOLUME regions=51
+sock aid                 level   5.8  1yr   30.5  3yr   31.2  regions=51
+button hook              level  12.4  1yr   71.4  3yr   98.0  regions=51
+adaptive clothing        level   7.7  1yr   67.7  3yr   94.3  regions=51
+built up handle utensils level   0.0  1yr   None  3yr   None  LOW VOLUME regions=51
+rocker knife             level   3.0  1yr   None  3yr   None  LOW VOLUME regions=51
+jar opener               level  15.8  1yr   33.7  3yr   31.8  regions=51
+reacher grabber tool     level   2.1  1yr   None  3yr   None  LOW VOLUME regions=51
+pill organizer           level  40.7  1yr   51.4  3yr   73.3  regions=51
+one handed kitchen tools level   0.0  1yr   None  3yr   None  LOW VOLUME regions=51
+bed rails for seniors    level   2.5  1yr   None  3yr   None  LOW VOLUME regions=51
+bed assist rail          level   1.7  1yr   None  3yr   None  LOW VOLUME regions=51
+rollator                 level  75.6  1yr   33.1  3yr   46.1  regions=51
+walking cane             level  37.1  1yr   25.2  3yr   25.7  regions=51
+walker basket            level   5.5  1yr   78.9  3yr   66.3  regions=51
+cane with seat           level   4.9  1yr   75.7  3yr   66.5  regions=51
+wheelchair cushion       level  13.2  1yr   74.5  3yr   81.4  regions=51
+aging in place           level  19.3  1yr   83.0  3yr  151.9  regions=51
